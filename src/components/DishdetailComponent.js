@@ -18,7 +18,7 @@ class Dishdetail extends Component{
                     &nbsp;
                     {new Intl.DateTimeFormat('en-US', {
                             year: 'numeric',
-                            month: 'long',
+                            month: 'short',
                             day: '2-digit'
                         }).format(new Date(comments.date))}
                     </p>
