@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Card, CardImg, CardText,CardBody, CardTitle,Breadcrumb,BreadcrumbItem, Button, Modal, ModalHeader,ModalBody,Row,Col, Label} from 'reactstrap';
 import {LocalForm, Control,Errors} from 'react-redux-form';
 import {Link} from 'react-router-dom';
+import {Loading} from './LoadingComponent.js'
 
 
 
@@ -55,14 +56,31 @@ import {Link} from 'react-router-dom';
 	const DishDetail=(props)=>
 	{
 		const dish=props.dish;
-		if(dish==null)
+        if(props.isLoading){
+            return(
+            <div className="container">
+                <div className="row">
+                    <Loading/>
+                </div>
+            </div>
+
+            );
+        }
+        else if(props.errMess){
+            return(
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+
+            );
+        }
+		else if(dish==null)
 		{
-			return(<div></div>);
-		}
-	
-		return(
-			<div clas="container">
-					 <Breadcrumb>
+            return(
+            <div clas="container">
+                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/Menu'>Menu</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
@@ -70,15 +88,19 @@ import {Link} from 'react-router-dom';
                         <h3> {props.dish.name}</h3>
                         <hr/>
                     </div>
-					<div className="row">
-						<RenderItem dish={props.dish}/>
-						<RenderComment comments={props.comments}
+                    <div className="row">
+                        <RenderItem dish={props.dish}/>
+                        <RenderComment comments={props.comments}
                         addComment={props.addComment}
                         dishId={props.dish.id}/>
-						
-					</div>
-			</div>
-		);
+                        
+                    </div>
+            </div>
+        );
+			
+		}
+	
+		
 	}
 
 
