@@ -76,7 +76,7 @@ import {Loading} from './LoadingComponent.js'
 
             );
         }
-		else if(dish==null)
+		else if(dish!=null)
 		{
             return(
             <div clas="container">
