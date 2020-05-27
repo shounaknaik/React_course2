@@ -8,7 +8,7 @@ import {baseUrl} from '../shared/baseUrl';
 
 
 	
-	function RenderComment({comments,addComment,dishId})
+	function RenderComment({comments,postComment,dishId})
 	{
 		const cmt=comments.map((comments)=>{
 			 return (
@@ -32,7 +32,7 @@ import {baseUrl} from '../shared/baseUrl';
 			<ul className="list-untstyled">
 				{cmt}
 			</ul>
-			<CommentForm dishId={dishId} addComment={addComment} />
+			<CommentForm dishId={dishId} postComment={postComment} />
 			</div>
 		);
 	}
@@ -92,7 +92,7 @@ import {baseUrl} from '../shared/baseUrl';
                     <div className="row">
                         <RenderItem dish={props.dish}/>
                         <RenderComment comments={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id}/>
                         
                     </div>
@@ -129,7 +129,7 @@ class CommentForm extends Component{
 	}
 	handleSubmit(values){
         this.toggleModal();
-        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment);
+        this.props.postComment(this.props.dishId,values.rating,values.author,values.comment);
        
     }
 
