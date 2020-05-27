@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {Card, CardImg, CardText,CardBody, CardTitle,Breadcrumb,BreadcrumbItem, Button, Modal, ModalHeader,ModalBody,Row,Col, Label} from 'reactstrap';
 import {LocalForm, Control,Errors} from 'react-redux-form';
 import {Link} from 'react-router-dom';
-import {Loading} from './LoadingComponent.js'
+import {Loading} from './LoadingComponent.js';
+import {baseUrl} from '../shared/baseUrl';
 
 
 
@@ -41,7 +42,7 @@ import {Loading} from './LoadingComponent.js'
 				<div key={dish.id} className="col-12 col-md-5 m-1">
 				 	<Card>
 				 			
-				 		<CardImg width="100%" src={dish.image} alt={dish.name}/>
+				 		<CardImg width="100%" src={baseUrl+dish.image} alt={dish.name}/>
 				 			
 				 		<CardBody>
 				 			<CardTitle>{dish.name}</CardTitle>
